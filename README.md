@@ -1,4 +1,4 @@
-# 🚀 Avinav Gupta - Interactive Portfolio
+# 🚀 Sanskar Basnet - Interactive Portfolio
 
 > A modern, interactive portfolio website featuring a custom terminal emulator, glassmorphism design, and cutting-edge web technologies.
 
