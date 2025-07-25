@@ -627,6 +627,154 @@
             transform: translateY(-2px);
         }
 
+        /* Certifications Section */
+        .certifications {
+            background: var(--primary-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .cert-shape {
+            position: absolute;
+            opacity: 0.8;
+        }
+
+        .cert-shape-1 {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #ec4899, #f97316);
+            border-radius: 50%;
+            top: 10%;
+            left: 5%;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .cert-shape-2 {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            bottom: 20%;
+            left: 8%;
+            animation: float 12s infinite ease-in-out reverse;
+        }
+
+        .cert-shape-3 {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            transform: rotate(45deg);
+            top: 15%;
+            right: 10%;
+            animation: float 18s infinite ease-in-out;
+        }
+
+        .certifications .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .certification-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            transform: translateY(30px);
+            opacity: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certification-card.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.3);
+        }
+
+        .certification-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .cert-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            position: relative;
+        }
+
+        .cert-icon.google {
+            background: linear-gradient(135deg, #4285f4, #34a853);
+        }
+
+        .cert-icon.ibm {
+            background: linear-gradient(135deg, #1f70c1, #0f62fe);
+        }
+
+        .cert-icon.simplilearn {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .cert-icon.memorial {
+            background: linear-gradient(135deg, #7c3aed, #5b21b6);
+        }
+
+        .cert-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .cert-provider {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .cert-special-icon {
+            position: absolute;
+            font-size: 1.8rem;
+        }
         /* Projects Section */
         .projects-grid {
             display: grid;
@@ -1106,7 +1254,8 @@
                 grid-template-columns: 1fr;
             }
 
-            .projects-grid {
+            .projects-grid,
+            .certifications-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1121,6 +1270,21 @@
             .form-buttons .btn {
                 width: 100%;
                 justify-content: center;
+            }
+
+            .cert-shape-1 {
+                width: 80px;
+                height: 80px;
+            }
+
+            .cert-shape-2 {
+                width: 60px;
+                height: 60px;
+            }
+
+            .cert-shape-3 {
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
@@ -1155,6 +1319,7 @@
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
@@ -1172,10 +1337,10 @@
                     Turning Data Into<br>
                     <span class="gradient-text">Vibrant Experiences</span>
                 </h1>
+                <br>
                 <p class="hero-description subtitle">
                     Passionate about transforming complex data into actionable insights and building AI solutions that make a real-world impact. Currently studying Data Science at Memorial University, Canada.
                 </p>
-                <br>
                 <div class="hero-cta">
                     <a href="#projects" class="btn btn-primary">
                         View My Work
@@ -1421,6 +1586,80 @@
                         <span class="skill-tag">Machine Learning</span>
                         <span class="skill-tag">Cybersecurity</span>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="section certifications" id="certifications">
+        <div class="cert-shapes">
+            <div class="cert-shape cert-shape-1"></div>
+            <div class="cert-shape cert-shape-2"></div>
+            <div class="cert-shape cert-shape-3"></div>
+        </div>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Professional Certifications</h2>
+                <p class="section-subtitle subtitle">
+                    Industry-recognized credentials validating my expertise across data science, cloud computing, and AI technologies.
+                </p>
+            </div>
+            <div class="certifications-grid">
+                <div class="certification-card">
+                    <div class="cert-icon google">
+                        G
+                    </div>
+                    <h3 class="cert-title">Google Analytics Certification</h3>
+                    <p class="cert-provider">Google</p>
+                </div>
+
+                <div class="certification-card">
+                    <div class="cert-icon ibm">
+                        IBM
+                    </div>
+                    <h3 class="cert-title">Cloud Computing Fundamentals</h3>
+                    <p class="cert-provider">IBM</p>
+                </div>
+
+                <div class="certification-card">
+                    <div class="cert-icon ibm">
+                        IBM
+                    </div>
+                    <h3 class="cert-title">Web Development Fundamentals</h3>
+                    <p class="cert-provider">IBM</p>
+                </div>
+
+                <div class="certification-card">
+                    <div class="cert-icon ibm">
+                        IBM
+                    </div>
+                    <h3 class="cert-title">Artificial Intelligence Fundamentals</h3>
+                    <p class="cert-provider">IBM</p>
+                </div>
+
+                <div class="certification-card">
+                    <div class="cert-icon ibm">
+                        IBM
+                    </div>
+                    <h3 class="cert-title">Data Science 101</h3>
+                    <p class="cert-provider">IBM</p>
+                </div>
+
+                <div class="certification-card">
+                    <div class="cert-icon simplilearn">
+                        <span class="cert-special-icon">🧠</span>
+                    </div>
+                    <h3 class="cert-title">Machine Learning</h3>
+                    <p class="cert-provider">Simplilearn</p>
+                </div>
+
+                <div class="certification-card">
+                    <div class="cert-icon memorial">
+                        <span class="cert-special-icon">🛡️</span>
+                    </div>
+                    <h3 class="cert-title">Introduction to Cybersecurity</h3>
+                    <p class="cert-provider">Memorial University</p>
                 </div>
             </div>
         </div>
@@ -1693,7 +1932,7 @@
         }, observerOptions);
 
         // Observe elements
-        document.querySelectorAll('.section-header, .about-image, .about-content, .contact-info, .contact-form, .experience-card, .skill-category, .project-card').forEach(el => {
+        document.querySelectorAll('.section-header, .about-image, .about-content, .contact-info, .contact-form, .experience-card, .skill-category, .certification-card, .project-card').forEach(el => {
             observer.observe(el);
         });
 
@@ -1785,7 +2024,7 @@
         });
 
         // Add stagger delay to animations
-        const staggerElements = document.querySelectorAll('.skill-category, .project-card, .experience-card');
+        const staggerElements = document.querySelectorAll('.skill-category, .certification-card, .project-card, .experience-card');
         staggerElements.forEach((el, index) => {
             el.style.transitionDelay = `${index * 0.1}s`;
         });
