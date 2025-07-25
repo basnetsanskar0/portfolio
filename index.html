@@ -443,11 +443,36 @@
         }
 
         /* Experience Section */
-        .experience-grid {
-            display: grid;
-            gap: 2rem;
-            max-width: 800px;
+        .experience-timeline {
+            max-width: 1000px;
             margin: 0 auto;
+            position: relative;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-primary);
+            transform: translateX(-50%);
+        }
+
+        .experience-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .experience-item:nth-child(odd) .experience-card {
+            margin-right: calc(50% + 2rem);
+            text-align: left;
+        }
+
+        .experience-item:nth-child(even) .experience-card {
+            margin-left: calc(50% + 2rem);
+            text-align: left;
         }
 
         .experience-card {
@@ -456,7 +481,6 @@
             border-radius: 16px;
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-left: 4px solid var(--accent-bright);
             transition: var(--transition);
             transform: translateY(30px);
             opacity: 0;
@@ -471,44 +495,27 @@
             transform: translateY(-4px);
             background: rgba(255, 255, 255, 0.08);
             box-shadow: 0 20px 40px -12px rgba(99, 102, 241, 0.2);
-            border-left-color: var(--accent-secondary);
-        }
-
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-            gap: 1rem;
         }
 
         .experience-date {
             color: var(--accent-bright);
             font-weight: 600;
+            margin-bottom: 1rem;
             font-size: 0.9rem;
-            background: rgba(99, 102, 241, 0.1);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            white-space: nowrap;
         }
 
         .experience-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 0.25rem;
-            color: var(--text-primary);
+            margin-bottom: 0.5rem;
         }
 
         .experience-company {
             color: var(--text-secondary);
+            margin-bottom: 1rem;
             font-weight: 500;
             font-size: 0.95rem;
-        }
-
-        .experience-description {
-            margin-top: 1rem;
         }
 
         .experience-description ul {
@@ -530,6 +537,30 @@
             left: 0;
             color: var(--accent-bright);
             font-size: 0.8rem;
+        }
+
+        /* Responsive Experience Section */
+        @media (max-width: 1024px) {
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .experience-timeline::before {
+                left: 2rem;
+            }
+
+            .experience-item:nth-child(odd) .experience-card,
+            .experience-item:nth-child(even) .experience-card {
+                margin-left: 4rem;
+                margin-right: 0;
+                text-align: left;
+            }
         }
 
         /* Skills Section */
@@ -1053,7 +1084,7 @@
     <div class="loading-screen" id="loadingScreen">
         <div class="loading-logo">SANSKAR</div>
         <div class="loading-spinner"></div>
-        <div class="loading-text">Initializing Data Science Portfolio</div>
+        <div class="loading-text">INITIALIZING DATA PIPELINES</div>
         <div class="loading-progress">
             <div class="loading-progress-bar"></div>
         </div>
@@ -1182,7 +1213,7 @@
                         </div>
                     </div>
                 </div>
-                <br>
+
                 <div class="experience-item">
                     <div class="experience-card">
                         <div class="experience-date">May 2025 - Present</div>
@@ -1198,7 +1229,7 @@
                         </div>
                     </div>
                 </div>
-                <br>
+
                 <div class="experience-item">
                     <div class="experience-card">
                         <div class="experience-date">May 2024 - August 2024</div>
@@ -1213,7 +1244,7 @@
                         </div>
                     </div>
                 </div>
-                <br>
+
                 <div class="experience-item">
                     <div class="experience-card">
                         <div class="experience-date">August 2023 - December 2023</div>
@@ -1228,7 +1259,7 @@
                         </div>
                     </div>
                 </div>
-                <br>
+
                 <div class="experience-item">
                     <div class="experience-card">
                         <div class="experience-date">September 2022 - August 2023</div>
