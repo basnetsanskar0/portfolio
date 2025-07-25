@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanskar | Data Science Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #1a0b2e;
+            --primary: #16213e;
+            --primary-light: #0f3460;
+            --accent: #e94560;
+            --accent-secondary: #f39c12;
+            --text: #e0e0e0;
+            --text-dark: #a0a0a0;
+            --glass-bg: rgba(22, 33, 62, 0.2);
+            --glass-border: rgba(233, 69, 96, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-dark);
+            background-image: 
+                linear-gradient(135deg, rgba(233, 69, 96, 0.1) 0%, rgba(15, 52, 96, 0.2) 100%),
+                radial-gradient(circle at 30% 50%, rgba(233, 69, 96, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(243, 156, 18, 0.1) 0%, transparent 50%);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            animation: pulse 2s infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: calc(100vh - 70px);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            width: 100%;
+            z-index: 2;
+            max-width: 60%;
+            margin-left: 5%;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            line-height: 1.6;
+            color: var(--text-dark);
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .typed-text::after {
+            content: "|";
+            animation: blink 1s infinite;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+            border: 1px solid var(--accent);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--accent);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text);
+            border: 1px solid var(--accent-secondary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-secondary);
+            color: var(--primary-dark);
+        }
+
+        /* About Section */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            color: var(--accent);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .about-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(233, 69, 96, 0.3);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--accent);
+            border-radius: 10px;
+            z-index: -1;
+        }
+
+        .about-text {
+            flex: 2;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-title {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        /* Skills Section */
+        .skills-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            margin-bottom: 2rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            background: rgba(233, 69, 96, 0.1);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            background: rgba(233, 69, 96, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Experience Section */
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--glass-border);
+            border-left: 4px solid var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateX(10px);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-location {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .experience-date {
+            font-size: 0.9rem;
+            color: var(--accent-secondary);
+            font-weight: 600;
+        }
+
+        .experience-description {
+            margin-top: 1rem;
+        }
+
+        .experience-description ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-description li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        .experience-description li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.8rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .project-description {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            font-size: 0.8rem;
+            background: rgba(233, 69, 96, 0.1);
+            color: var(--text);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--accent);
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--accent-secondary);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-info {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .contact-form {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(233, 69, 96, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+        }
+
+        .contact-text h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-text p, .contact-text a {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-text a:hover {
+            color: var(--accent);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 4px;
+            border: 1px solid var(--glass-border);
+            background: rgba(22, 33, 62, 0.1);
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        /* Floating particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary-dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loading-icon {
+            width: 80px;
+            height: 80px;
+            border: 4px solid rgba(233, 69, 96, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--accent);
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+        .loading-text {
+            color: var(--accent);
+            font-family: monospace;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 4px;
+            background: rgba(233, 69, 96, 0.1);
+            position: relative;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+
+        .progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: var(--accent);
+            width: 0;
+            animation: progress 3s ease forwards;
+        }
+
+        .loading-status {
+            font-family: monospace;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                margin-bottom: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content {
+                max-width: 90%;
+                margin-left: 0;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes progress {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        /* Certificate badges */
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .certificate-badge {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 1rem;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .certificate-badge:hover {
+            transform: translateY(-5px);
+        }
+
+        .certificate-badge i {
+            font-size: 2rem;
+            color: var(--accent-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-badge h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+            color: var(--text);
+        }
+
+        .certificate-badge p {
+            font-size: 0.8rem;
+            color: var(--text-dark);
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-icon"></div>
+        <div class="loading-text">INITIALIZING DATA PIPELINE</div>
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <div class="loading-status">Loading ML models... Please wait</div>
+    </div>
+
+    <!-- Floating Particles -->
+    <div class="particles">
+        <div class="particle" style="top: 20%; left: 10%; width: 4px; height: 4px; animation-delay: 0s;"></div>
+        <div class="particle" style="top: 60%; left: 30%; width: 6px; height: 6px; animation-delay: 2s;"></div>
+        <div class="particle" style="top: 40%; left: 70%; width: 3px; height: 3px; animation-delay: 4s;"></div>
+        <div class="particle" style="top: 80%; left: 50%; width: 5px; height: 5px; animation-delay: 6s;"></div>
+        <div class="particle" style="top: 15%; left: 80%; width: 4px; height: 4px; animation-delay: 8s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-chart-line"></i>
+            <span>Sanskar</span>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hello, I'm <span>Sanskar</span></h1>
+                <p>
+                    <span class="typed-text">Data Science Student | AI Developer | Machine Learning Enthusiast</span>
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-chart-bar"></i> View Projects
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-envelope"></i> Contact Me
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://avatars.githubusercontent.com/u/placeholder?v=4" alt="Sanskar">
+                </div>
+                <div class="about-text">
+                    <p>
+                        I'm Sanskar, a passionate Data Science student at Memorial University, Canada, with hands-on experience in AI development, full-stack applications, and statistical modeling. Currently certified by both Google and IBM, I bring a unique blend of academic knowledge and practical industry experience.
+                    </p>
+                    <p>
+                        My journey spans from developing AI agents for the insurance industry at B4E Insurtech to building full-stack tools for medical image analysis at Memorial University's DIAG lab. I'm passionate about transforming complex data into actionable insights and building AI solutions that make a real-world impact.
+                    </p>
+                    <p>
+                        With expertise in Python, R, SQL, and various machine learning frameworks, I'm always eager to tackle challenging problems in data science, artificial intelligence, and statistical modeling.
+                    </p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">3+</div>
+                            <div class="stat-title">Years of Study</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">7+</div>
+                            <div class="stat-title">Certifications</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-title">Work Experiences</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-title">Skills Mastered</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">AI Agent Development Intern</div>
+                            <div class="experience-company">B4E Insurtech Inc</div>
+                            <div class="experience-location">Ontario, Canada</div>
+                        </div>
+                        <div class="experience-date">April 2025 - Present</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Design, develop, and test AI models and algorithms for insurance industry applications</li>
+                            <li>Collaborate with cross-functional teams to integrate AI solutions into existing platforms and workflows</li>
+                            <li>Analyze large datasets to extract actionable insights and support data-driven decision making</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Full-Stack Developer & Data QA Analyst</div>
+                            <div class="experience-company">Data and Image Analysis Group (DIAG), MUN</div>
+                            <div class="experience-location">St. John's, NL</div>
+                        </div>
+                        <div class="experience-date">May 2025 - Present</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Developed and maintained full-stack components for AI-based medical image analysis pipelines</li>
+                            <li>Built full-stack tools for medical image analysis, data visualization, and annotation workflows</li>
+                            <li>Gained hands-on experience with Docker, Python, C++, JavaScript, and Git in a team-based dev environment</li>
+                            <li>Collaborated with an agile research team to build scalable, production-ready software for real-world healthcare applications</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Laboratory/Research Assistant</div>
+                            <div class="experience-company">Memorial University</div>
+                            <div class="experience-location">St. John's, NL</div>
+                        </div>
+                        <div class="experience-date">May 2024 - August 2024</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Assisted in conducting analytical processes and ensuring accuracy in methodologies</li>
+                            <li>Managed tools and resources to maintain seamless operations</li>
+                            <li>Collaborated with the team to troubleshoot challenges and optimize workflows</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Pension Assistant</div>
+                            <div class="experience-company">Memorial University</div>
+                            <div class="experience-location">St. John's, NL</div>
+                        </div>
+                        <div class="experience-date">August 2023 - December 2023</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Updated employee benefits information while ensuring policy compliance</li>
+                            <li>Maintained spreadsheets to track and analyze pension and benefit plan data</li>
+                            <li>Assisted with audits and provided administrative support</li>
+                            <li>Collaborated with the team to troubleshoot issues and improve pension processes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">WUSC-MUN Ambassador</div>
+                            <div class="experience-company">Memorial University</div>
+                            <div class="experience-location">St. John's, NL</div>
+                        </div>
+                        <div class="experience-date">September 2022 - August 2023</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Offered support to SRP students and created more welcoming communities</li>
+                            <li>Acted as an ongoing social support network for newly arrived students</li>
+                            <li>Raised awareness on campus about the refugee crisis and scholarship opportunities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-content">
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">R</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">C++</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3><i class="fas fa-chart-bar"></i> Data Analysis & Visualization</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">Matplotlib</span>
+                            <span class="skill-tag">Seaborn</span>
+                            <span class="skill-tag">Plotly</span>
+                            <span class="skill-tag">Tableau</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3><i class="fas fa-robot"></i> Machine Learning & AI</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Scikit-learn</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">Keras</span>
+                            <span class="skill-tag">OpenCV</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3><i class="fas fa-database"></i> Databases & Big Data</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">Apache Spark</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">Google Cloud</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Jupyter</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3><i class="fas fa-calculator"></i> Statistical Analysis</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Statistical Modeling</span>
+                            <span class="skill-tag">Hypothesis Testing</span>
+                            <span class="skill-tag">Regression Analysis</span>
+                            <span class="skill-tag">Time Series</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Certifications -->
+            <div style="margin-top: 3rem;">
+                <h3 style="color: var(--accent); margin-bottom: 2rem; text-align: center;">Professional Certifications</h3>
+                <div class="certificate-grid">
+                    <div class="certificate-badge">
+                        <i class="fab fa-google"></i>
+                        <h4>Google Analytics Certification</h4>
+                        <p>Google</p>
+                    </div>
+                    <div class="certificate-badge">
+                        <i class="fab fa-ibm"></i>
+                        <h4>Cloud Computing Fundamentals</h4>
+                        <p>IBM</p>
+                    </div>
+                    <div class="certificate-badge">
+                        <i class="fab fa-ibm"></i>
+                        <h4>Web Development Fundamentals</h4>
+                        <p>IBM</p>
+                    </div>
+                    <div class="certificate-badge">
+                        <i class="fab fa-ibm"></i>
+                        <h4>Artificial Intelligence Fundamentals</h4>
+                        <p>IBM</p>
+                    </div>
+                    <div class="certificate-badge">
+                        <i class="fab fa-ibm"></i>
+                        <h4>Data Science 101</h4>
+                        <p>IBM</p>
+                    </div>
+                    <div class="certificate-badge">
+                        <i class="fas fa-brain"></i>
+                        <h4>Machine Learning</h4>
+                        <p>Simplilearn</p>
+                    </div>
+                    <div class="certificate-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Introduction to Cybersecurity</h4>
+                        <p>Memorial University</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Insurance AI Agent Platform</h3>
+                        <p class="project-description">
+                            Developed AI models and algorithms for B4E Insurtech to automate insurance processes, analyze risk patterns, and provide intelligent recommendations for policy decisions.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">TensorFlow</span>
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">Insurance Analytics</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Medical Image Analysis Pipeline</h3>
+                        <p class="project-description">
+                            Built full-stack tools for AI-based medical image analysis, including data visualization dashboards and annotation workflows for healthcare applications at DIAG.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">OpenCV</span>
+                            <span class="project-tag">Docker</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">Medical AI</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Predictive Analytics Dashboard</h3>
+                        <p class="project-description">
+                            Created an interactive dashboard for data-driven decision making using advanced statistical modeling and machine learning techniques to predict business outcomes.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">R</span>
+                            <span class="project-tag">Shiny</span>
+                            <span class="project-tag">Statistical Modeling</span>
+                            <span class="project-tag">Data Visualization</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Student Data Analytics System</h3>
+                        <p class="project-description">
+                            Developed a comprehensive data analysis system for tracking student performance and engagement metrics, helping improve academic outcomes through data insights.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">SQL</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Pandas</span>
+                            <span class="project-tag">Education Analytics</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Cybersecurity Data Analysis</h3>
+                        <p class="project-description">
+                            Applied data science techniques to cybersecurity challenges, analyzing network traffic patterns and developing models to detect potential security threats.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Network Analysis</span>
+                            <span class="project-tag">Anomaly Detection</span>
+                            <span class="project-tag">Cybersecurity</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Cloud-Based ML Pipeline</h3>
+                        <p class="project-description">
+                            Built a scalable machine learning pipeline on cloud infrastructure for automated model training, deployment, and monitoring using modern DevOps practices.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">AWS</span>
+                            <span class="project-tag">Docker</span>
+                            <span class="project-tag">MLOps</span>
+                            <span class="project-tag">CI/CD</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <a href="mailto:sanskar@mun.ca">sanskar@mun.ca</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Location</h4>
+                            <p>St. John's, Newfoundland and Labrador, Canada</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>LinkedIn</h4>
+                            <a href="#" target="_blank">linkedin.com/in/sanskar-ds</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>GitHub</h4>
+                            <a href="#" target="_blank">github.com/sanskar-ds</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Education</h4>
+                            <p>Bachelor's in Data Science<br>Memorial University (2022-2026)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form action="mailto:sanskar@mun.ca" method="post" enctype="text/plain">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-kaggle"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="footer-text">&copy; 2025 Sanskar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.loading-screen').style.opacity = '0';
+                document.querySelector('.loading-screen').style.visibility = 'hidden';
+            }, 3000);
+        });
+
+        // Typed Text Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const typedText = document.querySelector('.typed-text');
+            const text = typedText.textContent;
+            typedText.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < text.length) {
+                    typedText.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+            
+            setTimeout(typeWriter, 1500);
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Contact form functionality
+        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const subject = this.querySelector('input[type="text"]:nth-of-type(2)').value;
+            const message = this.querySelector('textarea').value;
+            
+            if (!name || !email || !message) {
+                alert('Please fill out all required fields.');
+                return;
+            }
+            
+            alert(`Thank you ${name}! Your message has been received.`);
+            this.reset();
+        });
+
+        // Add floating particles animation
+        function createParticles() {
+            const particlesContainer = document.querySelector('.particles');
+            
+            setInterval(() => {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = particle.style.height = Math.random() * 5 + 2 + 'px';
+                particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+                particle.style.opacity = Math.random() * 0.3 + 0.1;
+                
+                particlesContainer.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 20000);
+            }, 3000);
+        }
+
+        createParticles();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(22, 33, 62, 0.95)';
+            } else {
+                navbar.style.background = 'rgba(22, 33, 62, 0.2)';
+            }
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.experience-card, .project-card, .skill-category').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
