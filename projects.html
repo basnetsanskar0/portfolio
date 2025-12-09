@@ -580,6 +580,10 @@
             .nav-links {
                 display: none;
             }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
 
             .section {
                 padding: 4rem 0;
@@ -623,6 +627,17 @@
         <div class="floating-shape shape-3"></div>
     </div>
 
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#home" class="nav-link" onclick="closeMobileMenu()">Home</a>
+        <a href="#about" class="nav-link" onclick="closeMobileMenu()">About</a>
+        <a href="experience.html" class="nav-link" onclick="closeMobileMenu()">Experience</a>
+        <a href="skills.html" class="nav-link" onclick="closeMobileMenu()">Skills</a>
+        <a href="certifications.html" class="nav-link" onclick="closeMobileMenu()">Certifications</a>
+        <a href="projects.html" class="nav-link" onclick="closeMobileMenu()">Projects</a>
+        <a href="#contact" class="nav-link" onclick="closeMobileMenu()">Contact</a>
+    </div>
+
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
@@ -635,7 +650,12 @@
                 <li><a href="certifications.html" class="nav-link">Certifications</a></li>
                 <li><a href="projects.html" class="nav-link active">Projects</a></li>
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
-            </ul>
+            </ul>            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </button>
         </div>
     </nav>
 
@@ -886,7 +906,49 @@
         </div>
     </section>
 
-    <script>
+    <script>     
+       // Mobile Menu Functions
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            
+            mobileMenu.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (mobileMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            
+            mobileMenu.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            
+            if (!mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                closeMobileMenu();
+            }
+        });
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+        
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
