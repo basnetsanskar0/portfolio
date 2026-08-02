@@ -595,6 +595,25 @@
             color: var(--accent-bright);
         }
 
+        .contact-link {
+            display: flex;
+            width: 100%;
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .contact-link:hover,
+        .contact-link:visited {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .contact-link:focus-visible {
+            outline: 2px solid #8b5cf6;
+            outline-offset: 4px;
+        }
+
         .contact-form {
             transform: translateX(50px);
             opacity: 0;
@@ -1246,80 +1265,96 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="section contact" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Let's Build Something Amazing</h2>
-                <p class="section-subtitle subtitle">
-                    Ready to discuss your next data science project? Let's connect and make it happen.
-                </p>
+<!-- Contact Section -->
+<section class="section contact" id="contact">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Let's Build Something Amazing</h2>
+            <p class="section-subtitle subtitle">
+                Ready to discuss your next data science project? Let's connect and make it happen.
+            </p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-text">
+                        <h4>Email</h4>
+                        <a href="mailto:sbasnet@mun.ca">sbasnet@mun.ca</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-text">
+                        <h4>Location</h4>
+                        <p>St. John's, NL, Canada</p>
+                    </div>
+                </div>
+
+                <a
+                    href="https://linkedin.com/in/sanskar-basnet-73a807202/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="contact-item contact-link"
+                    aria-label="Visit Sanskar Basnet's LinkedIn profile"
+                >
+                    <div class="contact-icon">💼</div>
+                    <div class="contact-text">
+                        <h4>LinkedIn</h4>
+                        <p>Connect with me</p>
+                    </div>
+                </a>
+
+                <a
+                    href="https://github.com/basnetsanskar0"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="contact-item contact-link"
+                    aria-label="Visit Sanskar Basnet's GitHub profile"
+                >
+                    <div class="contact-icon">💻</div>
+                    <div class="contact-text">
+                        <h4>GitHub</h4>
+                        <p>Check my repos</p>
+                    </div>
+                </a>
             </div>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">✉️</div>
-                        <div class="contact-text">
-                            <h4>Email</h4>
-                            <a href="mailto:sbasnet@mun.ca">sbasnet@mun.ca</a>
-                        </div>
+
+            <div class="contact-form">
+                <form id="contactForm" action="https://formspree.io/f/xpwzgvkg" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div class="contact-text">
-                            <h4>Location</h4>
-                            <p>St. John's, NL, Canada</p>
-                        </div>
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" placeholder="Your Email" required>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">💼</div>
-                        <div class="contact-text">
-                            <h4>LinkedIn</h4>
-                            <a href="https://linkedin.com/in/sanskar-basnet-73a807202/" target="_blank">Connect with me</a>
-                        </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" class="form-control" placeholder="Subject" required>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">💻</div>
-                        <div class="contact-text">
-                            <h4>GitHub</h4>
-                            <a href="https://github.com/basnetsanskar0" target="_blank">Check my repos</a>
-                        </div>
+                    <div class="form-group">
+                        <textarea name="message" class="form-control" placeholder="Tell me about your project..." required></textarea>
                     </div>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm" action="https://formspree.io/f/xpwzgvkg" method="POST">
-                        <div class="form-group">
-                            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" class="form-control" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="subject" class="form-control" placeholder="Subject" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="message" class="form-control" placeholder="Tell me about your project..." required></textarea>
-                        </div>
-                        <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission">
-                        <input type="hidden" name="_replyto" value="">
-                        <input type="hidden" name="_next" value="">
-                        
-                        <div class="form-buttons">
-                            <button type="submit" class="btn btn-primary">
-                                <span class="btn-text">Send Message</span>
-                                <span class="btn-loading" style="display: none;">Sending...</span>
-                            </button>
-                            <a href="mailto:sbasnet@mun.ca?subject=Portfolio Inquiry&body=Hi Sanskar,%0D%0A%0D%0AI found your portfolio and would like to discuss..." class="btn btn-outline">
-                                Direct Email
-                            </a>
-                        </div>
-                        
-                        <div class="form-status" id="formStatus" style="display: none;"></div>
-                    </form>
-                </div>
+                    <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission">
+                    <input type="hidden" name="_replyto" value="">
+                    <input type="hidden" name="_next" value="">
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-loading" style="display: none;">Sending...</span>
+                        </button>
+                        <a href="mailto:sbasnet@mun.ca?subject=Portfolio Inquiry&body=Hi Sanskar,%0D%0A%0D%0AI found your portfolio and would like to discuss..." class="btn btn-outline">
+                            Direct Email
+                        </a>
+                    </div>
+
+                    <div class="form-status" id="formStatus" style="display: none;"></div>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer class="footer">
