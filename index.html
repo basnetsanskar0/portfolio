@@ -137,11 +137,18 @@ section{padding:clamp(54px,7.5vw,92px) 0;border-bottom:1px solid var(--line)}
 .cert:hover .fo .v{color:var(--amber-deep)}
 .cert-more{margin-top:22px;font-size:14.5px;color:var(--muted);line-height:1.95}
 
-/* ---------------- preloader ---------------- */
-#preload{position:fixed;inset:0;z-index:999;background:var(--bg);display:flex;align-items:center;justify-content:center;
-  transition:opacity .7s var(--ease),visibility .7s}
-#preload.done{opacity:0;visibility:hidden}
-.pl-word{position:relative;font-size:clamp(2.6rem,7vw,5.4rem);font-weight:700;letter-spacing:-.045em;line-height:1;display:flex;align-items:baseline}
+/* ---------------- preloader + curtain reveal ---------------- */
+#preload{position:fixed;inset:0;z-index:999;pointer-events:none}
+#preload.gone{display:none}
+.cols{position:absolute;inset:0;display:flex}
+.cols i{flex:1;background:var(--bg);border-bottom:2px solid var(--amber);
+  transform:translateY(0);will-change:transform;
+  transition:transform 1s cubic-bezier(.76,0,.24,1)}
+.cols.up i{transform:translateY(-101%)}
+.pl-word{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;
+  font-size:clamp(2.6rem,7vw,5.4rem);font-weight:700;letter-spacing:-.045em;line-height:1;
+  display:flex;align-items:baseline;transition:opacity .35s var(--ease)}
+.pl-word.fade{opacity:0}
 .pl-stack{position:relative;display:inline-block}
 .pl-base{color:#cfc9bb}
 .pl-fill{position:absolute;left:0;top:0;color:var(--ink);white-space:nowrap;overflow:hidden;width:0}
@@ -180,8 +187,9 @@ footer{border-top:1px solid var(--line);padding:26px 0 36px}
 </head>
 <body class="loading">
 
-<div id="preload">
-  <div class="pl-word">
+<div id="preload" aria-hidden="true">
+  <div class="cols" id="cols"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="pl-word" id="plWord">
     <span class="pl-stack">
       <span class="pl-base">Welcome</span>
       <span class="pl-fill" id="plFill">Welcome</span>
@@ -219,9 +227,9 @@ footer{border-top:1px solid var(--line);padding:26px 0 36px}
 
 <div class="wrap">
   <div class="strip">
-    <span class="n">01</span><b>One Terraform module</b>
-    <span>beats one manual setup, every time</span>
-    <span class="right">AWS · Cloudflare · Terraform</span>
+    <span class="n">—</span><b>Data Science graduate</b>
+    <span>working where cloud infrastructure meets machine learning</span>
+    <span class="right">AWS Certified ×3 · Open to work</span>
   </div>
 </div>
 
@@ -628,24 +636,41 @@ footer{border-top:1px solid var(--line);padding:26px 0 36px}
 <footer class="wrap">
   <div class="foot">
     <span>© 2026 Sanskar Basnet</span>
-    <span>St. John's, Newfoundland &amp; Labrador</span>
+    <span>Canada</span>
   </div>
 </footer>
 
 </div>
 <script>
-/* ---- preloader: "Welcome." fills left to right ---- */
+/* ---- preloader: "Welcome." fills, then columns retract upward ---- */
 (function(){
-  const pre=document.getElementById('preload'),fill=document.getElementById('plFill');
+  const pre=document.getElementById('preload'),fill=document.getElementById('plFill'),
+        word=document.getElementById('plWord'),cols=document.getElementById('cols'),
+        bars=[...cols.children];
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const seen=sessionStorage.getItem('sb_seen');
-  function finish(){pre.classList.add('done');document.body.classList.remove('loading');sessionStorage.setItem('sb_seen','1')}
-  if(seen||reduce){fill.style.width='100%';finish();return}
-  const dur=1500,t0=performance.now();
+  function clear(){pre.classList.add('gone');document.body.classList.remove('loading');
+    sessionStorage.setItem('sb_seen','1')}
+
+  /* rightmost column leads, each one lags slightly — makes the staircase */
+  bars.forEach((b,i)=>{b.style.transitionDelay=((bars.length-1-i)*70)+'ms'});
+
+  if(seen||reduce){clear();return}
+
+  const dur=1400,t0=performance.now();
   (function step(now){
     const p=Math.min((now-t0)/dur,1);
     fill.style.width=(p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2)*100+'%';
-    if(p<1)requestAnimationFrame(step);else setTimeout(finish,260);
+    if(p<1){requestAnimationFrame(step)}
+    else{
+      setTimeout(()=>{
+        word.classList.add('fade');
+        setTimeout(()=>{
+          cols.classList.add('up');
+          setTimeout(clear,1000+bars.length*70);
+        },300);
+      },240);
+    }
   })(t0);
 })();
 
