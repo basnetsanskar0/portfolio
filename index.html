@@ -137,6 +137,42 @@ section{padding:clamp(54px,7.5vw,92px) 0;border-bottom:1px solid var(--line)}
 .cert:hover .fo .v{color:var(--amber-deep)}
 .cert-more{margin-top:22px;font-size:14.5px;color:var(--muted);line-height:1.95}
 
+/* ---------------- cityscape band ---------------- */
+.cityband{position:relative;overflow:hidden;border-bottom:1px solid var(--line);
+  height:132px;background:linear-gradient(180deg,#fdfbf4,var(--bg))}
+.city-track{position:absolute;left:0;bottom:0;height:132px;width:3200px;
+  animation:cityroll 34s linear infinite}
+@keyframes cityroll{from{transform:translateX(0)}to{transform:translateX(-1600px)}}
+.walker{position:absolute;left:12%;bottom:5px;height:80px;width:auto;z-index:2}
+.wk-shadow{position:absolute;left:12%;bottom:2px;width:44px;height:7px;border-radius:50%;
+  background:#e0dbd0;z-index:1;transform:translateX(2px)}
+.wk-body{animation:bob .35s ease-in-out infinite alternate}
+@keyframes bob{from{transform:translateY(0)}to{transform:translateY(-1.8px)}}
+
+.lg-a,.lg-b,.kn-a,.kn-b,.ar-a,.ar-b{transform-box:view-box}
+.lg-a,.lg-b{transform-origin:31px 50px}
+.kn-a,.kn-b{transform-origin:31px 75px}
+.ar-a,.ar-b{transform-origin:32px 27px}
+
+.lg-a{animation:thighA .7s ease-in-out infinite}
+.lg-b{animation:thighB .7s ease-in-out infinite}
+.kn-a{animation:kneeA .7s ease-in-out infinite}
+.kn-b{animation:kneeB .7s ease-in-out infinite}
+.ar-a{animation:swB .7s ease-in-out infinite}
+.ar-b{animation:swA .7s ease-in-out infinite}
+
+@keyframes thighA{0%{transform:rotate(26deg)}50%{transform:rotate(-24deg)}100%{transform:rotate(26deg)}}
+@keyframes thighB{0%{transform:rotate(-24deg)}50%{transform:rotate(26deg)}100%{transform:rotate(-24deg)}}
+@keyframes kneeA{0%{transform:rotate(-3deg)}25%{transform:rotate(-6deg)}50%{transform:rotate(-2deg)}75%{transform:rotate(-46deg)}100%{transform:rotate(-3deg)}}
+@keyframes kneeB{0%{transform:rotate(-2deg)}25%{transform:rotate(-46deg)}50%{transform:rotate(-3deg)}75%{transform:rotate(-6deg)}100%{transform:rotate(-2deg)}}
+@keyframes swA{0%{transform:rotate(22deg)}50%{transform:rotate(-22deg)}100%{transform:rotate(22deg)}}
+@keyframes swB{0%{transform:rotate(-22deg)}50%{transform:rotate(22deg)}100%{transform:rotate(-22deg)}}
+
+@media(prefers-reduced-motion:reduce){
+  .city-track,.wk-body,.lg-a,.lg-b,.kn-a,.kn-b,.ar-a,.ar-b{animation:none}
+}
+@media(max-width:640px){.cityband{height:104px}.city-track{height:104px}.walker{height:64px;left:8%}.wk-shadow{left:8%;width:36px}}
+
 /* ---------------- preloader + curtain reveal ---------------- */
 #preload{position:fixed;inset:0;z-index:999;pointer-events:none}
 #preload.gone{display:none}
@@ -227,10 +263,155 @@ footer{border-top:1px solid var(--line);padding:26px 0 36px}
 
 <div class="wrap">
   <div class="strip">
-    <span class="n">01</span><b>One Terraform module</b>
-    <span>beats one manual setup, every time</span>
-    <span class="right">AWS · Cloudflare · Terraform</span>
+    <span class="n">—</span><b>Data Science graduate</b>
+    <span>working where cloud infrastructure meets machine learning</span>
+    <span class="right">AWS Certified ×3 · Open to work</span>
   </div>
+</div>
+
+<div class="cityband" aria-hidden="true">
+  <div class="city-track">
+    <svg viewBox="0 0 3200 132" width="3200" height="132" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <g id="gh"><rect x="0" y="-46" width="76" height="46" fill="none" stroke="#cbc7bb" stroke-width="1.1"/></g>
+        <g id="gh2"><rect x="0" y="-32" width="54" height="32" fill="none" stroke="#cbc7bb" stroke-width="1.1"/></g>
+
+        <g id="bT" stroke="#6f6d64" stroke-width="1.3">
+          <rect x="-3" y="-82" width="44" height="6" rx="1.5" fill="#fbf9f3"/>
+          <rect x="0" y="-76" width="38" height="76" fill="#fbf9f3"/>
+          <rect x="5" y="-69" width="12" height="7" rx="3" fill="#dcd8cc"/><rect x="21" y="-69" width="12" height="7" rx="3" fill="#dcd8cc"/>
+          <rect x="5" y="-58" width="12" height="7" rx="3" fill="#dcd8cc"/><rect x="21" y="-58" width="12" height="7" rx="3" fill="#dcd8cc"/>
+          <rect x="5" y="-47" width="12" height="7" rx="3" fill="#dcd8cc"/><rect x="21" y="-47" width="12" height="7" rx="3" fill="#dcd8cc"/>
+          <rect x="5" y="-36" width="12" height="7" rx="3" fill="#dcd8cc"/><rect x="21" y="-36" width="12" height="7" rx="3" fill="#dcd8cc"/>
+          <rect x="5" y="-25" width="12" height="7" rx="3" fill="#dcd8cc"/><rect x="21" y="-25" width="12" height="7" rx="3" fill="#dcd8cc"/>
+          <rect x="13" y="-14" width="12" height="14" rx="2" fill="#dcd8cc"/>
+        </g>
+
+        <g id="bM" stroke="#6f6d64" stroke-width="1.3">
+          <rect x="-3" y="-58" width="52" height="6" rx="1.5" fill="#fbf9f3"/>
+          <rect x="0" y="-52" width="46" height="52" fill="#fbf9f3"/>
+          <rect x="5" y="-45" width="15" height="7" rx="3" fill="#dcd8cc"/><rect x="26" y="-45" width="15" height="7" rx="3" fill="#dcd8cc"/>
+          <rect x="5" y="-33" width="15" height="7" rx="3" fill="#dcd8cc"/><rect x="26" y="-33" width="15" height="7" rx="3" fill="#dcd8cc"/>
+          <rect x="17" y="-14" width="13" height="14" rx="2" fill="#dcd8cc"/>
+        </g>
+
+        <g id="bL" stroke="#6f6d64" stroke-width="1.3">
+          <rect x="12" y="-64" width="42" height="16" fill="#efece3"/>
+          <rect x="0" y="-52" width="62" height="52" fill="#f3f0e7"/>
+          <rect x="9" y="-44" width="17" height="8" rx="3.5" fill="#dcd8cc"/><rect x="34" y="-44" width="17" height="8" rx="3.5" fill="#dcd8cc"/>
+          <rect x="9" y="-30" width="17" height="8" rx="3.5" fill="#dcd8cc"/><rect x="34" y="-30" width="17" height="8" rx="3.5" fill="#dcd8cc"/>
+          <path d="M4 -20 L23 -32 L42 -20 Z" fill="#fbf9f3"/>
+          <rect x="8" y="-20" width="31" height="20" fill="#fbf9f3"/>
+          <path d="M15 -14 h17 l-3 6 h-11 z" fill="#f0ae4d"/>
+          <rect x="10" y="-17" width="8" height="8" rx="1.5" fill="#dcd8cc"/>
+          <rect x="27" y="-12" width="8" height="12" rx="1.5" fill="#dcd8cc"/>
+        </g>
+
+        <g id="bA" stroke="#6f6d64" stroke-width="1.3">
+          <rect x="-3" y="-86" width="48" height="7" rx="1.5" fill="#f9e9c4"/>
+          <rect x="0" y="-79" width="42" height="79" fill="#f9e9c4"/>
+          <rect x="6" y="-72" width="13" height="8" rx="3.5" fill="#dcd8cc"/><rect x="24" y="-72" width="13" height="8" rx="3.5" fill="#dcd8cc"/>
+          <rect x="6" y="-60" width="13" height="8" rx="3.5" fill="#dcd8cc"/><rect x="24" y="-60" width="13" height="8" rx="3.5" fill="#dcd8cc"/>
+          <rect x="6" y="-48" width="13" height="8" rx="3.5" fill="#dcd8cc"/><rect x="24" y="-48" width="13" height="8" rx="3.5" fill="#dcd8cc"/>
+          <rect x="6" y="-36" width="13" height="8" rx="3.5" fill="#dcd8cc"/><rect x="24" y="-36" width="13" height="8" rx="3.5" fill="#dcd8cc"/>
+          <rect x="6" y="-24" width="13" height="8" rx="3.5" fill="#dcd8cc"/><rect x="24" y="-24" width="13" height="8" rx="3.5" fill="#dcd8cc"/>
+          <path d="M9 -14 h20 l-4 7 h-12 z" fill="#f0ae4d"/>
+          <rect x="14" y="-7" width="12" height="7" fill="#f0ae4d"/>
+        </g>
+
+        <g id="hs" stroke="#6f6d64" stroke-width="1.3">
+          <path d="M-4 -20 L21 -36 L46 -20 Z" fill="#fbf9f3"/>
+          <rect x="3" y="-20" width="36" height="20" fill="#fbf9f3"/>
+          <rect x="8" y="-15" width="10" height="8" rx="3" fill="#dcd8cc"/>
+          <rect x="25" y="-14" width="9" height="14" rx="1.5" fill="#dcd8cc"/>
+        </g>
+
+        <g id="tr"><line x1="9" y1="0" x2="9" y2="-44" stroke="#6f6d64" stroke-width="1.3"/>
+          <path d="M9 -14 C 0 -23 0 -35 9 -45 C 18 -35 18 -23 9 -14 Z" fill="#d8d5cc" stroke="#6f6d64" stroke-width="1.3"/></g>
+
+        <g id="lp"><path d="M6 0 v-34 q0 -7 7 -7 h5" fill="none" stroke="#6f6d64" stroke-width="1.3"/>
+          <circle cx="21" cy="-41" r="4.5" fill="#fbf9f3" stroke="#6f6d64" stroke-width="1.3"/>
+          <circle cx="21" cy="-41" r="11" fill="#f0ae4d" opacity=".14"/>
+          <ellipse cx="10" cy="0" rx="13" ry="3" fill="none" stroke="#cbc7bb" stroke-width="1.1"/></g>
+
+        <g id="tl"><line x1="5" y1="0" x2="5" y2="-24" stroke="#6f6d64" stroke-width="1.3"/>
+          <line x1="1" y1="0" x2="9" y2="0" stroke="#6f6d64" stroke-width="1.3"/>
+          <rect x="0" y="-38" width="11" height="15" rx="3.5" fill="#fbf9f3" stroke="#6f6d64" stroke-width="1.3"/>
+          <circle cx="5.5" cy="-30.5" r="2.2" fill="#f0ae4d"/></g>
+
+        <g id="bn" stroke="#6f6d64" stroke-width="1.3">
+          <line x1="0" y1="-8" x2="30" y2="-8"/><line x1="0" y1="-13" x2="30" y2="-13"/>
+          <line x1="4" y1="-8" x2="4" y2="0"/><line x1="26" y1="-8" x2="26" y2="0"/></g>
+
+        <g id="bk" fill="none" stroke="#6f6d64" stroke-width="1.3">
+          <circle cx="7" cy="-7" r="7"/><circle cx="27" cy="-7" r="7"/>
+          <path d="M7 -7 L15 -18 L27 -7 M15 -18 L20 -18 M7 -7 L20 -7 M20 -7 L20 -19"/></g>
+
+        <g id="cr" stroke="#6f6d64" stroke-width="1.3">
+          <path d="M0 -6 q0 -7 8 -7 l5 -6 h13 l6 6 q7 0 7 7 z" fill="#dcd8cc"/>
+          <circle cx="10" cy="-5" r="4" fill="#fbf9f3"/><circle cx="29" cy="-5" r="4" fill="#fbf9f3"/></g>
+
+        <g id="bin" stroke="#6f6d64" stroke-width="1.3"><path d="M0 -11 h13 l-2 11 h-9 z" fill="#dcd8cc"/><line x1="-2" y1="-11" x2="15" y2="-11"/></g>
+
+        <g id="pn"><line x1="10" y1="0" x2="10" y2="-30" stroke="#a8a294" stroke-width="1.2" stroke-dasharray="4 4"/>
+          <path d="M10 -28 C 3 -36 3 -46 10 -50 C 17 -46 17 -36 10 -28 Z" fill="#f0ae4d"/>
+          <circle cx="10" cy="-43" r="4" fill="#fdfbf5"/></g>
+
+        <g id="tile">
+          <line x1="0" y1="120" x2="1600" y2="120" stroke="#6f6d64" stroke-width="1.3"/>
+          <g transform="translate(0,120)">
+            <use href="#gh" x="96"/><use href="#gh2" x="360"/><use href="#gh" x="700"/><use href="#gh2" x="980"/><use href="#gh" x="1260"/>
+            <use href="#tl" x="16"/><use href="#tr" x="52"/><use href="#hs" x="92"/><use href="#bin" x="152"/>
+            <use href="#bA" x="176"/><use href="#cr" x="230"/><use href="#bn" x="312"/>
+            <use href="#bk" x="360"/><use href="#tr" x="406"/><use href="#bL" x="448"/><use href="#lp" x="520"/>
+            <use href="#tr" x="560"/><use href="#bT" x="600"/><use href="#tl" x="654"/><use href="#bn" x="680"/>
+            <use href="#tr" x="726"/><use href="#pn" x="768"/><use href="#bM" x="800"/><use href="#hs" x="862"/>
+            <use href="#cr" x="920"/><use href="#tr" x="968"/><use href="#bT" x="1006"/><use href="#lp" x="1060"/>
+            <use href="#bk" x="1100"/><use href="#tr" x="1146"/><use href="#bL" x="1188"/><use href="#tl" x="1262"/>
+            <use href="#bn" x="1290"/><use href="#tr" x="1336"/><use href="#bM" x="1374"/><use href="#bin" x="1436"/>
+            <use href="#hs" x="1458"/><use href="#tr" x="1518"/>
+          </g>
+        </g>
+      </defs>
+      <use href="#tile" x="0"/>
+      <use href="#tile" x="1600"/>
+    </svg>
+  </div>
+
+  <span class="wk-shadow" aria-hidden="true"></span>
+  <svg class="walker" viewBox="0 0 60 104" xmlns="http://www.w3.org/2000/svg">
+    <g class="wk-body">
+      <g class="lg-b">
+        <path d="M23.5 49 h11 l-0.8 27 h-10.2 z" fill="#262c37"/>
+        <g class="kn-b">
+          <path d="M24 74 h9.6 l-0.6 22 h-9 z" fill="#262c37"/>
+          <path d="M21.6 92.5 h12 q3.6 0 3.6 3.6 v3.1 h-15.6 z" fill="#161b22"/>
+        </g>
+      </g>
+      <g class="ar-b">
+        <path d="M25.4 27 q-4.2 1 -4.2 6 v14.5 q0 4 3.5 4 q3.5 0 3.5 -4 v-20.5 z" fill="#3f7fb2"/>
+        <circle cx="24.8" cy="52.4" r="3.4" fill="#dfa87e"/>
+      </g>
+      <rect x="29.6" y="20" width="6.4" height="6" rx="1.4" fill="#e0a87c"/>
+      <path d="M23 22 h13.2 q5.2 0 5.8 5.2 l2.6 19.4 q0.7 5 -4.4 5 h-14.2 q-4.6 0 -4.6 -4.6 v-20.4 q0 -4.6 4.6 -4.6 z" fill="#4a90c8"/>
+      <path d="M24.2 22.2 q6.4 6.2 13.4 0 l-1.2 -3.2 q-5.2 4.2 -11.2 0 z" fill="#6fb0dd"/>
+      <g class="lg-a">
+        <path d="M26 49 h11.2 l-0.8 27 h-10.4 z" fill="#2f3644"/>
+        <g class="kn-a">
+          <path d="M26.4 74 h9.8 l-0.6 22 h-9.2 z" fill="#2f3644"/>
+          <path d="M24 92.5 h12.2 q3.6 0 3.6 3.6 v3.1 h-15.8 z" fill="#1f242e"/>
+        </g>
+      </g>
+      <g class="ar-a">
+        <path d="M35.6 27 q4.6 1 4.6 6 v14.5 q0 4 -3.6 4 q-3.6 0 -3.6 -4 v-20.5 z" fill="#4a90c8"/>
+        <circle cx="36.8" cy="52.4" r="3.6" fill="#f2b98e"/>
+      </g>
+      <circle cx="33" cy="14.6" r="9" fill="#f2b98e"/>
+      <path d="M23.9 13.8 q-1 -11.2 9.1 -11.2 q10.1 0 9.6 11.2 q-2.1 -6.1 -6.6 -6.6 q-5.1 4.6 -12.1 6.6 z" fill="#2b2c33"/>
+      <circle cx="39.4" cy="14.4" r="1.1" fill="#2b2c33"/>
+      <path d="M38.2 18.6 q2 0.7 3.1 -0.6" fill="none" stroke="#d69a6c" stroke-width="1" stroke-linecap="round"/>
+    </g>
+  </svg>
 </div>
 
 <section id="work" class="wrap">
