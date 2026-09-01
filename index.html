@@ -138,12 +138,20 @@ section{padding:clamp(54px,7.5vw,92px) 0;border-bottom:1px solid var(--line)}
 .cert-more{margin-top:22px;font-size:14.5px;color:var(--muted);line-height:1.95}
 
 /* ---------------- cityscape band ---------------- */
-.cityband{position:relative;overflow:hidden;border-bottom:1px solid var(--line);
-  height:132px;background:linear-gradient(180deg,#fdfbf4,var(--bg))}
-.city-track{position:absolute;left:0;bottom:0;height:132px;width:3200px;
+/* --bh drives everything: the svg scales to the band, and the scroll
+   distance scales with it, so one tile always equals one loop. */
+.cityband{--bh:132px;position:relative;overflow:hidden;border-bottom:1px solid var(--line);
+  height:var(--bh);background:linear-gradient(180deg,#fdfbf4,var(--bg))}
+.city-track{position:absolute;left:0;bottom:0;
+  height:var(--bh);width:calc(var(--bh) * 24.2424242);
   animation:cityroll 34s linear infinite}
-@keyframes cityroll{from{transform:translateX(0)}to{transform:translateX(-1600px)}}
-.walker{--fw:57px;--n:31;position:absolute;left:12%;bottom:4px;z-index:2;
+.city-track > svg{display:block;width:100%;height:100%}
+@keyframes cityroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(calc(var(--bh) * -12.1212121))}
+}
+.walker{--fw:57px;--n:31;position:absolute;left:12%;z-index:2;
+  bottom:calc(var(--bh) * 0.0303);
   width:var(--fw);height:90px;
   background:url(walker.png) 0 0/calc(var(--fw) * var(--n)) 100% no-repeat;
   animation:walkcycle 1.03s steps(31) infinite}
@@ -151,13 +159,14 @@ section{padding:clamp(54px,7.5vw,92px) 0;border-bottom:1px solid var(--line)}
   from{background-position:0 0}
   to{background-position:calc(var(--fw) * var(--n) * -1) 0}
 }
-.wk-shadow{position:absolute;left:12%;bottom:2px;width:46px;height:6px;border-radius:50%;
+.wk-shadow{position:absolute;left:12%;bottom:calc(var(--bh) * 0.0152);
+  width:46px;height:6px;border-radius:50%;
   background:#e0dbd0;z-index:1;transform:translateX(4px)}
 @media(prefers-reduced-motion:reduce){
   .city-track,.walker{animation:none}
 }
 @media(max-width:640px){
-  .cityband{height:104px}.city-track{height:104px}
+  .cityband{--bh:104px}
   .walker{--fw:44px;height:70px;left:8%}
   .wk-shadow{left:8%;width:36px}
 }
@@ -260,7 +269,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 36px}
 
 <div class="cityband" aria-hidden="true">
   <div class="city-track">
-    <svg viewBox="0 0 3200 132" width="3200" height="132" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 3200 132" preserveAspectRatio="xMinYMid meet" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <g id="gh"><rect x="0" y="-46" width="76" height="46" fill="none" stroke="#cbc7bb" stroke-width="1.1"/></g>
         <g id="gh2"><rect x="0" y="-32" width="54" height="32" fill="none" stroke="#cbc7bb" stroke-width="1.1"/></g>
