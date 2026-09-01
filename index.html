@@ -143,15 +143,24 @@ section{padding:clamp(54px,7.5vw,92px) 0;border-bottom:1px solid var(--line)}
 .city-track{position:absolute;left:0;bottom:0;height:132px;width:3200px;
   animation:cityroll 34s linear infinite}
 @keyframes cityroll{from{transform:translateX(0)}to{transform:translateX(-1600px)}}
-.walker{position:absolute;left:12%;bottom:5px;height:78px;width:auto;z-index:2;
-  animation:bob .58s ease-in-out infinite alternate}
-.wk-shadow{position:absolute;left:12%;bottom:2px;width:46px;height:7px;border-radius:50%;
-  background:#e0dbd0;z-index:1;transform:translateX(-2px)}
-@keyframes bob{from{transform:translateY(0)}to{transform:translateY(-2px)}}
+.walker{--fw:57px;--n:31;position:absolute;left:12%;bottom:4px;z-index:2;
+  width:var(--fw);height:90px;
+  background:url(walker.png) 0 0/calc(var(--fw) * var(--n)) 100% no-repeat;
+  animation:walkcycle 1.03s steps(31) infinite}
+@keyframes walkcycle{
+  from{background-position:0 0}
+  to{background-position:calc(var(--fw) * var(--n) * -1) 0}
+}
+.wk-shadow{position:absolute;left:12%;bottom:2px;width:46px;height:6px;border-radius:50%;
+  background:#e0dbd0;z-index:1;transform:translateX(4px)}
 @media(prefers-reduced-motion:reduce){
   .city-track,.walker{animation:none}
 }
-@media(max-width:640px){.cityband{height:104px}.city-track{height:104px}.walker{height:62px;left:8%}.wk-shadow{left:8%;width:36px}}
+@media(max-width:640px){
+  .cityband{height:104px}.city-track{height:104px}
+  .walker{--fw:44px;height:70px;left:8%}
+  .wk-shadow{left:8%;width:36px}
+}
 
 /* ---------------- preloader + curtain reveal ---------------- */
 #preload{position:fixed;inset:0;z-index:999;pointer-events:none}
@@ -243,7 +252,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 36px}
 
 <div class="wrap">
   <div class="strip">
-    <span class="n"></span><b>One Terraform module</b>
+    <span class="n">One Terraform module</span><b></b>
     <span>beats one manual setup, every time</span>
     <span class="right">AWS · Cloudflare · Terraform</span>
   </div>
@@ -359,7 +368,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 36px}
   </div>
 
   <span class="wk-shadow" aria-hidden="true"></span>
-  <img class="walker" src="walker.png" alt="" width="196" height="390">
+  <span class="walker" aria-hidden="true"></span>
 </div>
 
 <section id="work" class="wrap">
